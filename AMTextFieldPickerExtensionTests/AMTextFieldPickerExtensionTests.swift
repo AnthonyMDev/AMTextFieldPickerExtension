@@ -16,11 +16,19 @@ class AMTextFieldPickerExtensionTests: XCTestCase {
   
   var sut: UITextField!
   
+  /**
+  *  MARK: - Test Set Up
+  */
+  
   override func setUp() {
     super.setUp()
     
     sut = UITextField()
   }
+  
+  /**
+  *  MARK: Tests
+  */
   
   func test__setPickerView__sets_inputViewToPicker() {
     // given
@@ -42,6 +50,7 @@ class AMTextFieldPickerExtensionTests: XCTestCase {
     // then
     let toolbar = self.sut.inputAccessoryView as? UIToolbar
     expect(toolbar).toNot(beNil())
+    expect(toolbar?.frame.height).to(beGreaterThanOrEqualTo(44))
     expect(toolbar?.items?.count).to(equal(2))
     let doneButton = toolbar?.items?.last as? UIBarButtonItem
     expect(doneButton?.action).to(equal("didPressPickerDoneButton:"))
@@ -75,6 +84,20 @@ class AMTextFieldPickerExtensionTests: XCTestCase {
     
     // then
     expect(self.sut.text).to(equal(expected))
+  }
+  
+  func test__didPressPickerDoneButton__resignsFirstResponder() {
+    // given
+    let window = UIWindow()
+    window.addSubview(sut)
+    
+    sut.becomeFirstResponder()
+    
+    // when
+    sut.didPressPickerDoneButton(self)
+    
+    // then
+    expect(self.sut.isFirstResponder()).to(beFalse())
   }
   
 }
