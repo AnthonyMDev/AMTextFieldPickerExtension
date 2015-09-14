@@ -14,10 +14,11 @@ When the "Done" button is pressed, the text field's text is set to the selected 
 
 ## Example
 
-First, create a `UIPickerView`. You'll need to implement the `UIPickerViewDataSource` (and optionally, `UIPickerViewDelegate`).
+First, create a `UIPickerView`. You'll need to implement the `UIPickerViewDataSource` and `UIPickerViewDelegate`.
 
     let pickerView = UIPickerView
     pickerView.dataSource = self
+    pickerView.delegate = self
 
 Then, just set your `UIPickerView` to the `pickerView` property on a `UITextField`.
 
@@ -29,3 +30,4 @@ And you're done!
 
 - Support for titles using `NSAttributedString`
 - Support for `UIDatePicker`
+- Support for multiple `UIPickerView` components
