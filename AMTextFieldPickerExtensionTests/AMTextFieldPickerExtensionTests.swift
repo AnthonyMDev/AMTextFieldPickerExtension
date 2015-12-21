@@ -52,7 +52,7 @@ class AMTextFieldPickerExtensionTests: XCTestCase {
     expect(toolbar).toNot(beNil())
     expect(toolbar?.frame.height).to(beGreaterThanOrEqualTo(44))
     expect(toolbar?.items?.count).to(equal(2))
-    let doneButton = toolbar?.items?.last as? UIBarButtonItem
+    let doneButton = toolbar?.items?.last
     expect(doneButton?.action).to(equal("didPressPickerDoneButton:"))
     expect(doneButton?.target as? UITextField).to(beIdenticalTo(self.sut))
   }
@@ -116,7 +116,7 @@ class MockPickerViewTitleDelegate: NSObject, UIPickerViewDelegate {
   
   var mockTitle: String = ""
   
-  func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String! {
+  func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
     return mockTitle
   }
   

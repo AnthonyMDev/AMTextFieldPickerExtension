@@ -11,7 +11,7 @@
 		924380781B3B4A5900DBD4A8 /* AMTextFieldPickerExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9243806C1B3B4A5900DBD4A8 /* AMTextFieldPickerExtension.framework */; };
 		9243807F1B3B4A5900DBD4A8 /* AMTextFieldPickerExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9243807E1B3B4A5900DBD4A8 /* AMTextFieldPickerExtensionTests.swift */; };
 		9243808B1B3B4A8C00DBD4A8 /* UITextField+AMSetPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9243808A1B3B4A8C00DBD4A8 /* UITextField+AMSetPicker.swift */; };
-		C459106C9582AB5707721CD5 /* Pods_AMTextFieldPickerExtensionTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30D019B73A566313ABBBD354 /* Pods_AMTextFieldPickerExtensionTests.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		C459106C9582AB5707721CD5 /* Pods_AMTextFieldPickerExtensionTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30D019B73A566313ABBBD354 /* Pods_AMTextFieldPickerExtensionTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -188,7 +188,9 @@
 		924380631B3B4A5900DBD4A8 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0630;
+				LastSwiftMigration = 0720;
+				LastSwiftUpdateCheck = 0720;
+				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = "Anthony Miller";
 				TargetAttributes = {
 					9243806B1B3B4A5900DBD4A8 = {
@@ -332,6 +334,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -411,6 +414,7 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "AnthonyMDev.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -429,6 +433,7 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "AnthonyMDev.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 			};
@@ -438,16 +443,13 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 64D527938E26F5D4731A14F7 /* Pods-AMTextFieldPickerExtensionTests.debug.xcconfig */;
 			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = AMTextFieldPickerExtensionTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "AnthonyMDev.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -456,12 +458,9 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = E18BE1EEF891C05C1222A4FA /* Pods-AMTextFieldPickerExtensionTests.release.xcconfig */;
 			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
 				INFOPLIST_FILE = AMTextFieldPickerExtensionTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "AnthonyMDev.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

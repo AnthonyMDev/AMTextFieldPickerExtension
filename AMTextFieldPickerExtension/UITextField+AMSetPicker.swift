@@ -44,7 +44,7 @@ public extension UITextField {
   
   :discussion: This method will set the text field's text with the title for the selected row in the `pickerView` in component `0` from the `pickerView`'s `delegate.
   
-  :param: sender The "Done" button sending the action.
+  - parameter sender: The "Done" button sending the action.
   */
   public func didPressPickerDoneButton(sender: AnyObject) {
     if let selectedRow = pickerView?.selectedRowInComponent(0),
