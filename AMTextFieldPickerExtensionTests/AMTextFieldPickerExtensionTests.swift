@@ -86,6 +86,28 @@ class AMTextFieldPickerExtensionTests: XCTestCase {
     expect(self.sut.text).to(equal(expected))
   }
   
+  func test__didPressPickerDoneButton__givenDelegate_sendsEditingChangedAction() {
+    // given
+    class MockSUT: UITextField {
+      var controlEventsSent: UIControlEvents?      
+      private override func sendActionsForControlEvents(controlEvents: UIControlEvents) {
+        controlEventsSent = controlEvents
+      }
+    }
+    
+    let SUT = MockSUT()
+    let mockPicker = MockPickerView()
+    let mockDelegate = MockPickerViewTitleDelegate()
+    mockPicker.delegate = mockDelegate
+    SUT.pickerView = mockPicker
+    
+    // when
+    SUT.didPressPickerDoneButton(self)
+    
+    // then
+    expect(SUT.controlEventsSent).toEventually(equal(UIControlEvents.EditingChanged))
+  }
+  
   func test__didPressPickerDoneButton__resignsFirstResponder() {
     // given
     let window = UIWindow()
@@ -118,6 +140,16 @@ class MockPickerViewTitleDelegate: NSObject, UIPickerViewDelegate {
   
   func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
     return mockTitle
+  }
+  
+}
+
+class TextFieldEventObserver {
+  
+  var editingChanged = false
+  
+  func editingDidChange() {
+    editingChanged = true
   }
   
 }

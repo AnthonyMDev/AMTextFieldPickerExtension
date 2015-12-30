@@ -50,9 +50,12 @@ public extension UITextField {
     if let selectedRow = pickerView?.selectedRowInComponent(0),
     title = pickerView?.delegate?.pickerView?(pickerView!, titleForRow: selectedRow, forComponent: 0) {
       self.text = title
+      dispatch_async(dispatch_get_main_queue(), { () -> Void in
+        self.sendActionsForControlEvents(.EditingChanged)
+      })
       
     }
     resignFirstResponder()
   }
-  
+
 }
