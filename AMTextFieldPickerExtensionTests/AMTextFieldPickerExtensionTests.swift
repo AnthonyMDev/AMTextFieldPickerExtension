@@ -42,8 +42,6 @@ class AMTextFieldPickerExtensionTests: XCTestCase {
   }
   
   func test__setPickerView__setsUpToolbar() {
-    // given
-    
     // when
     sut.pickerView = UIPickerView()
     
@@ -63,6 +61,42 @@ class AMTextFieldPickerExtensionTests: XCTestCase {
     
     // when
     sut.pickerView = nil
+    
+    // then
+    expect(self.sut.inputAccessoryView).to(beNil())
+  }
+  
+  func test__setDatePicker__sets_inputViewToDatePicker() {
+    // given
+    let expected = UIDatePicker()
+    
+    // when
+    sut.datePicker = expected
+    
+    // then
+    expect(self.sut.inputView).to(beIdenticalTo(expected))
+  }
+  
+  func test__setDatePicker__setsUpToolbar() {
+    // when
+    sut.datePicker = UIDatePicker()
+    
+    // then
+    let toolbar = self.sut.inputAccessoryView as? UIToolbar
+    expect(toolbar).toNot(beNil())
+    expect(toolbar?.frame.height).to(beGreaterThanOrEqualTo(44))
+    expect(toolbar?.items?.count).to(equal(2))
+    let doneButton = toolbar?.items?.last
+    expect(doneButton?.action).to(equal("didPressPickerDoneButton:"))
+    expect(doneButton?.target as? UITextField).to(beIdenticalTo(self.sut))
+  }
+  
+  func test__setDatePicker__givenNil_setsInputAccessoryViewNil() {
+    // given
+    sut.inputAccessoryView = UIView()
+    
+    // when
+    sut.datePicker = nil
     
     // then
     expect(self.sut.inputAccessoryView).to(beNil())
@@ -113,6 +147,8 @@ class AMTextFieldPickerExtensionTests: XCTestCase {
     let window = UIWindow()
     window.addSubview(sut)
     
+    sut.pickerView = UIPickerView()
+    
     sut.becomeFirstResponder()
     
     // when
@@ -120,6 +156,26 @@ class AMTextFieldPickerExtensionTests: XCTestCase {
     
     // then
     expect(self.sut.isFirstResponder()).to(beFalse())
+  }
+  
+  func test__didPressPickerDoneButton__givenDatePicker__setsTextFieldText_withDateFormat() {
+    // given
+    let format = "MM/d/yyyy"
+    sut.dateFormat = format
+    
+    sut.datePicker = UIDatePicker()
+    let date = NSDate()
+    sut.datePicker?.setDate(date, animated: false)
+    
+    let formatter = NSDateFormatter()
+    formatter.dateFormat = format
+    let expected = formatter.stringFromDate(date)
+    
+    // when
+    sut.didPressPickerDoneButton(self)
+    
+    // then
+    expect(self.sut.text).to(equal(expected))
   }
   
 }

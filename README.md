@@ -8,9 +8,9 @@ A `UITextField` extension written in Swift that makes it easy to use a `UIPicker
 
 ## Usage
 
-`AMTextFieldPickerExtension` adds a `pickerView` property to `UITextField`. When this property is set, the `pickerView` is set to the `UITextField`'s `inputView` property. A `UIToolbar`, containing a "Done" button, is also set to the `inputAccessoryView` property.
+`AMTextFieldPickerExtension` adds `pickerView` and `datePicker` properties to `UITextField`. When these properties are set, the `UITextField`'s `inputView` is set and a `UIToolbar`, containing a "Done" button, is also set to the `inputAccessoryView` property.
 
-When the "Done" button is pressed, the text field's text is set to the selected title in the `pickerView` for the first component.
+When the "Done" button is pressed, the text field's text is set to the selected title in the `pickerView` for the first component or the date selected. Setting the `dateFormat` property on `UITextField` allows you to configure how the selected date will display in the text field.
 
 ## Example
 
@@ -29,5 +29,4 @@ And you're done!
 ## Coming Soon:
 
 - Support for titles using `NSAttributedString`
-- Support for `UIDatePicker`
 - Support for multiple `UIPickerView` components
