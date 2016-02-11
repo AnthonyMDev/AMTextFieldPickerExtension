@@ -3,7 +3,7 @@ A `UITextField` extension written in Swift that makes it easy to use a `UIPicker
 
 ## Installation
 
-`AMTextFieldPickerExtension` is available through Cocoapods. Just add this line to your `Podfile`:
+`AMTextFieldPickerExtension` is available through CocoaPods. Just add this line to your `Podfile`:
     pod 'AMTextFieldPickerExtension'
 
 ## Usage
