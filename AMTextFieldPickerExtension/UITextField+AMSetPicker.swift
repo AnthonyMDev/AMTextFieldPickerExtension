@@ -47,7 +47,10 @@ public extension UITextField {
   private func pickerToolbar() -> UIToolbar {
     let toolbar = UIToolbar(frame: CGRectMake(0, 0, 320, 44))
     let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .FlexibleSpace, target: nil, action: nil)
-    let doneButton = UIBarButtonItem(barButtonSystemItem: .Done, target: self, action: "didPressPickerDoneButton:")
+    let doneButton = UIBarButtonItem(barButtonSystemItem: .Done,
+                                     target: self,
+                                     action: #selector(UITextField.didPressPickerDoneButton(_:)))
+    
     toolbar.items = [flexibleSpace, doneButton]
     
     return toolbar
