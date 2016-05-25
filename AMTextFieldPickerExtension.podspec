@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name = 'AMTextFieldPickerExtension'
-  s.version = '0.3.0'
+  s.version = '0.3.1'
   s.license = 'MIT'
   s.summary = 'A `UITextField` extension written in Swift that makes it easy to use a `UIPickerView` for selection.'
   s.homepage = 'https://github.com/AnthonyMDev/AMTextFieldPickerExtension'
