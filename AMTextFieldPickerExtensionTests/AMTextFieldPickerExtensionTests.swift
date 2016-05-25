@@ -51,7 +51,7 @@ class AMTextFieldPickerExtensionTests: XCTestCase {
     expect(toolbar?.frame.height).to(beGreaterThanOrEqualTo(44))
     expect(toolbar?.items?.count).to(equal(2))
     let doneButton = toolbar?.items?.last
-    expect(doneButton?.action).to(equal("didPressPickerDoneButton:"))
+    expect(doneButton?.action).to(equal(#selector(UITextField.didPressPickerDoneButton(_:))))
     expect(doneButton?.target as? UITextField).to(beIdenticalTo(self.sut))
   }
   
@@ -87,7 +87,7 @@ class AMTextFieldPickerExtensionTests: XCTestCase {
     expect(toolbar?.frame.height).to(beGreaterThanOrEqualTo(44))
     expect(toolbar?.items?.count).to(equal(2))
     let doneButton = toolbar?.items?.last
-    expect(doneButton?.action).to(equal("didPressPickerDoneButton:"))
+    expect(doneButton?.action).to(equal(#selector(UITextField.didPressPickerDoneButton(_:))))
     expect(doneButton?.target as? UITextField).to(beIdenticalTo(self.sut))
   }
   
