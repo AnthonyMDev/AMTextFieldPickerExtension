@@ -1,12 +1,15 @@
 PODS:
+  - AMTextFieldPickerExtension (0.3.1)
   - Nimble (4.0.1)
 
 DEPENDENCIES:
+  - AMTextFieldPickerExtension
   - Nimble
 
 SPEC CHECKSUMS:
+  AMTextFieldPickerExtension: 06df70cd763c6a2bc76cc565eeb97da887b1fb4e
   Nimble: 0f3c8b8b084cda391209c3c5efbb48bedeeb920a
 
-PODFILE CHECKSUM: dd948e18df4997350a3cfbf4bd7be8389ec34c22
+PODFILE CHECKSUM: 96da87bb20d3ad4ac445da564ba6bf4887dce83a
 
-COCOAPODS: 1.0.0
+COCOAPODS: 1.0.1

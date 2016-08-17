@@ -12,6 +12,7 @@
 		924380781B3B4A5900DBD4A8 /* AMTextFieldPickerExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9243806C1B3B4A5900DBD4A8 /* AMTextFieldPickerExtension.framework */; };
 		9243807F1B3B4A5900DBD4A8 /* AMTextFieldPickerExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9243807E1B3B4A5900DBD4A8 /* AMTextFieldPickerExtensionTests.swift */; };
 		9243808B1B3B4A8C00DBD4A8 /* UITextField+AMSetPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9243808A1B3B4A8C00DBD4A8 /* UITextField+AMSetPicker.swift */; };
+		92BA74A11D65200D0027EDAC /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92BA74A01D65200D0027EDAC /* Nimble.framework */; };
 		A167B3F5E28028734F8C73AA /* Pods_AMTextFieldPickerExtensionTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAF13567F3F2B77D3465DD1B /* Pods_AMTextFieldPickerExtensionTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -35,6 +36,7 @@
 		9243807D1B3B4A5900DBD4A8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9243807E1B3B4A5900DBD4A8 /* AMTextFieldPickerExtensionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AMTextFieldPickerExtensionTests.swift; sourceTree = "<group>"; };
 		9243808A1B3B4A8C00DBD4A8 /* UITextField+AMSetPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITextField+AMSetPicker.swift"; sourceTree = "<group>"; };
+		92BA74A01D65200D0027EDAC /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = "../../../Library/Developer/Xcode/DerivedData/AMTextFieldPickerExtension-cwzbpznxwthcbaebzdagexidrktb/Build/Products/Debug-iphonesimulator/Nimble/Nimble.framework"; sourceTree = "<group>"; };
 		BDF0A5FB18F1E7F175678E7A /* Pods-AMTextFieldPickerExtensionTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AMTextFieldPickerExtensionTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AMTextFieldPickerExtensionTests/Pods-AMTextFieldPickerExtensionTests.debug.xcconfig"; sourceTree = "<group>"; };
 		CAF13567F3F2B77D3465DD1B /* Pods_AMTextFieldPickerExtensionTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AMTextFieldPickerExtensionTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1BDC0C50B5BD4B94606F2D2 /* Pods_AMTextFieldPickerExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AMTextFieldPickerExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -54,6 +56,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				92BA74A11D65200D0027EDAC /* Nimble.framework in Frameworks */,
 				924380781B3B4A5900DBD4A8 /* AMTextFieldPickerExtension.framework in Frameworks */,
 				A167B3F5E28028734F8C73AA /* Pods_AMTextFieldPickerExtensionTests.framework in Frameworks */,
 			);
@@ -65,6 +68,7 @@
 		7081A8798E2E4FE7757C2B58 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				92BA74A01D65200D0027EDAC /* Nimble.framework */,
 				D1BDC0C50B5BD4B94606F2D2 /* Pods_AMTextFieldPickerExtension.framework */,
 				CAF13567F3F2B77D3465DD1B /* Pods_AMTextFieldPickerExtensionTests.framework */,
 			);
@@ -155,12 +159,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 924380821B3B4A5900DBD4A8 /* Build configuration list for PBXNativeTarget "AMTextFieldPickerExtension" */;
 			buildPhases = (
-				717460777A75A470FD474786 /* 📦 Check Pods Manifest.lock */,
+				717460777A75A470FD474786 /* [CP] Check Pods Manifest.lock */,
 				924380671B3B4A5900DBD4A8 /* Sources */,
 				924380681B3B4A5900DBD4A8 /* Frameworks */,
 				924380691B3B4A5900DBD4A8 /* Headers */,
 				9243806A1B3B4A5900DBD4A8 /* Resources */,
-				0D7039873144D63083971257 /* 📦 Copy Pods Resources */,
+				0D7039873144D63083971257 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -175,12 +179,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 924380851B3B4A5900DBD4A8 /* Build configuration list for PBXNativeTarget "AMTextFieldPickerExtensionTests" */;
 			buildPhases = (
-				71B056A08CC6B4894FE6A439 /* 📦 Check Pods Manifest.lock */,
+				71B056A08CC6B4894FE6A439 /* [CP] Check Pods Manifest.lock */,
 				924380731B3B4A5900DBD4A8 /* Sources */,
 				924380741B3B4A5900DBD4A8 /* Frameworks */,
 				924380751B3B4A5900DBD4A8 /* Resources */,
-				5CFA8BF2F024D8479153C27C /* 📦 Embed Pods Frameworks */,
-				6F37EC14C2CC6EE1432F6911 /* 📦 Copy Pods Resources */,
+				5CFA8BF2F024D8479153C27C /* [CP] Embed Pods Frameworks */,
+				6F37EC14C2CC6EE1432F6911 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -247,14 +251,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		0D7039873144D63083971257 /* 📦 Copy Pods Resources */ = {
+		0D7039873144D63083971257 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Copy Pods Resources";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -262,14 +266,14 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AMTextFieldPickerExtension/Pods-AMTextFieldPickerExtension-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		5CFA8BF2F024D8479153C27C /* 📦 Embed Pods Frameworks */ = {
+		5CFA8BF2F024D8479153C27C /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Embed Pods Frameworks";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -277,14 +281,14 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AMTextFieldPickerExtensionTests/Pods-AMTextFieldPickerExtensionTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		6F37EC14C2CC6EE1432F6911 /* 📦 Copy Pods Resources */ = {
+		6F37EC14C2CC6EE1432F6911 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Copy Pods Resources";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -292,14 +296,14 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AMTextFieldPickerExtensionTests/Pods-AMTextFieldPickerExtensionTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		717460777A75A470FD474786 /* 📦 Check Pods Manifest.lock */ = {
+		717460777A75A470FD474786 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -307,14 +311,14 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		71B056A08CC6B4894FE6A439 /* 📦 Check Pods Manifest.lock */ = {
+		71B056A08CC6B4894FE6A439 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -490,7 +494,6 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = AMTextFieldPickerExtensionTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "AnthonyMDev.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -501,7 +504,6 @@
 			baseConfigurationReference = 87D7E3BC68669719C0AC3EED /* Pods-AMTextFieldPickerExtensionTests.release.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = AMTextFieldPickerExtensionTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "AnthonyMDev.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

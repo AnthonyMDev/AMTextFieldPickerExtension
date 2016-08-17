@@ -9,5 +9,6 @@ target :AMTextFieldPickerExtension do
 end
 
 target :AMTextFieldPickerExtensionTests do
-  pod 'Nimble'
+    pod 'AMTextFieldPickerExtension'
+    pod 'Nimble'
 end
