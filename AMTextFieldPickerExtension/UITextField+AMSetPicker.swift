@@ -16,7 +16,7 @@ import UIKit
 public extension UITextField {
     
     private struct AssociatedKeys {
-        static var DateFormat = "am_DateFormat"
+        static var DateFormatter = "am_DateFormat"
         static var ShowClearButton = "am_ShowClearButton"
         static var ClearButtonTitle = "am_ClearButtonTitle"
     }
@@ -75,15 +75,21 @@ public extension UITextField {
                                action: #selector(UITextField.didPressPickerClearButton(_:)))
     }
     
-    /// The formatting string to use to set the text field's `text` when using the `datePicker`.
-    /// See `NSDateFormatter` for more information.
-    /// Defaults to "M/d/yy".
-    public var dateFormat: String {
+    /// The `NSDateFormatter` to use to set the text field's `text` when using the `datePicker`.
+    /// Defaults to a date formatter with date format: "M/d/yy".
+    public var dateFormatter: NSDateFormatter {
         get {
-            return objc_getAssociatedObject(self, &AssociatedKeys.DateFormat) as? String ?? "M/d/yy"
+            if let formatter = objc_getAssociatedObject(self, &AssociatedKeys.DateFormatter) as? NSDateFormatter {
+                return formatter
+            } else {
+                let formatter = NSDateFormatter()
+                formatter.dateFormat = "M/d/yy"
+                objc_setAssociatedObject(self, &AssociatedKeys.DateFormatter, formatter, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+                return formatter
+            }
         }
         set {
-            objc_setAssociatedObject(self, &AssociatedKeys.DateFormat, newValue as NSString, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+            objc_setAssociatedObject(self, &AssociatedKeys.DateFormatter, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
         }
     }
     
@@ -140,9 +146,7 @@ public extension UITextField {
     
     private func setTextFromDatePicker() {
         if let date = datePicker?.date {
-            let formatter = NSDateFormatter()
-            formatter.dateFormat = dateFormat
-            self.text = formatter.stringFromDate(date)
+            self.text = self.dateFormatter.stringFromDate(date)
         }
     }
     

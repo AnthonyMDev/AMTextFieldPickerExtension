@@ -195,7 +195,7 @@ class AMTextFieldPickerExtensionTests: XCTestCase {
     func test__didPressPickerDoneButton__givenDatePicker__setsTextFieldText_withDateFormat() {
         // given
         let format = "MM/d/yyyy"
-        sut.dateFormat = format
+        sut.dateFormatter.dateFormat = format
         
         sut.datePicker = UIDatePicker()
         let date = NSDate()
