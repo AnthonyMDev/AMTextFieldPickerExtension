@@ -107,6 +107,35 @@ class AMTextFieldPickerExtensionTests: XCTestCase {
         expect(clearButton?.target as? UITextField).to(beIdenticalTo(self.sut))
     }
     
+    func test__setDatePicker__givenSetShowPickerClearButtonTrue_afterSettingDatePicker_setsUpToolbarWithClearButton() {
+        // given
+        sut.datePicker = UIDatePicker()
+        
+        // when
+        sut.showPickerClearButton = true
+        
+        // then
+        let toolbar = self.sut.inputAccessoryView as? UIToolbar
+        expect(toolbar?.items?.count).to(equal(3))
+        let clearButton = toolbar?.items?.first
+        expect(clearButton?.title).to(equal("Clear"))
+        expect(clearButton?.action).to(equal(#selector(UITextField.didPressPickerClearButton(_:))))
+        expect(clearButton?.target as? UITextField).to(beIdenticalTo(self.sut))
+    }
+    
+    func test__setDatePicker__givenSetShowPickerClearButtonFalse_afterSettingDatePicker_removesClearButton() {
+        // given
+        sut.showPickerClearButton = true
+        sut.datePicker = UIDatePicker()
+        
+        // when
+        sut.showPickerClearButton = false
+        
+        // then
+        let toolbar = self.sut.inputAccessoryView as? UIToolbar
+        expect(toolbar?.items?.count).to(equal(2))
+    }
+    
     func test__setDatePicker__givenShowPickerClearButton_withClearButtonTitle_setsUpToolbarWithClearButtonWithTitle() {
         // given
         let expected = "Test Title"

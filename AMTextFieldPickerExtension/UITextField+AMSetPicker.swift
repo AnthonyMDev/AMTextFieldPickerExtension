@@ -46,6 +46,14 @@ public extension UITextField {
         self.inputAccessoryView = picker != nil ? pickerToolbar() : nil
     }
     
+    private func refreshPickerToolbar() {
+        self.inputAccessoryView = hasPicker() ? pickerToolbar() : nil
+    }
+    
+    private func hasPicker() -> Bool {
+        return pickerView != nil || datePicker != nil
+    }
+    
     private func pickerToolbar() -> UIToolbar {
         let toolbar = UIToolbar(frame: CGRectMake(0, 0, 320, 44))
         let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .FlexibleSpace, target: nil, action: nil)
@@ -101,6 +109,7 @@ public extension UITextField {
         }
         set {
             objc_setAssociatedObject(self, &AssociatedKeys.ShowClearButton, newValue as Bool, .OBJC_ASSOCIATION_COPY_NONATOMIC)
+            refreshPickerToolbar()
         }
     }
     
