@@ -171,6 +171,7 @@ public extension UITextField {
         dispatch_async(dispatch_get_main_queue(), { () -> Void in
             self.sendActionsForControlEvents(.EditingChanged)
         })
+        resignFirstResponder()
     }
     
 }
