@@ -39,15 +39,15 @@ public extension UITextField {
     }
   }
   
-  private func setInputViewToPicker(picker: UIView?) {
+  fileprivate func setInputViewToPicker(_ picker: UIView?) {
     self.inputView = picker
     self.inputAccessoryView = picker != nil ? pickerToolbar() : nil
   }
   
-  private func pickerToolbar() -> UIToolbar {
-    let toolbar = UIToolbar(frame: CGRectMake(0, 0, 320, 44))
-    let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .FlexibleSpace, target: nil, action: nil)
-    let doneButton = UIBarButtonItem(barButtonSystemItem: .Done, target: self, action: "didPressPickerDoneButton:")
+  fileprivate func pickerToolbar() -> UIToolbar {
+    let toolbar = UIToolbar(frame: CGRect(origin: CGPoint(x: 0, y: 0), size: CGSize(width: 320, height: 44)))
+    let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+    let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(UITextField.didPressPickerDoneButton(_:)))
     toolbar.items = [flexibleSpace, doneButton]
     
     return toolbar
@@ -65,7 +65,7 @@ public extension UITextField {
     }
   }
   
-  private struct AssociatedKeys {
+  fileprivate struct AssociatedKeys {
     static var DateFormat = "am_DateFormat"
   }
   
@@ -76,7 +76,7 @@ public extension UITextField {
   
   - parameter sender: The "Done" button sending the action.
   */
-  public func didPressPickerDoneButton(sender: AnyObject) {
+  public func didPressPickerDoneButton(_ sender: AnyObject) {
     guard pickerView != nil || datePicker != nil else { return }
     
     if pickerView != nil {
@@ -85,24 +85,24 @@ public extension UITextField {
     } else if datePicker != nil {
       setTextFromDatePicker()
     }
-    dispatch_async(dispatch_get_main_queue(), { () -> Void in
-      self.sendActionsForControlEvents(.EditingChanged)
+    DispatchQueue.main.async(execute: { () -> Void in
+      self.sendActions(for: .editingChanged)
     })
     resignFirstResponder()
   }
   
-  private func setTextFromPickerView() {
-    if let selectedRow = pickerView?.selectedRowInComponent(0),
-      title = pickerView?.delegate?.pickerView?(pickerView!, titleForRow: selectedRow, forComponent: 0) {
+  fileprivate func setTextFromPickerView() {
+    if let selectedRow = pickerView?.selectedRow(inComponent: 0),
+      let title = pickerView?.delegate?.pickerView?(pickerView!, titleForRow: selectedRow, forComponent: 0) {
         self.text = title
     }
   }
   
-  private func setTextFromDatePicker() {
+  fileprivate func setTextFromDatePicker() {
     if let date = datePicker?.date {
-      let formatter = NSDateFormatter()
+      let formatter = DateFormatter()
       formatter.dateFormat = dateFormat
-      self.text = formatter.stringFromDate(date)
+      self.text = formatter.string(from: date)
     }
   }
   
