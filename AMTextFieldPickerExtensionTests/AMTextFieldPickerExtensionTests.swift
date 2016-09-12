@@ -187,7 +187,7 @@ class AMTextFieldPickerExtensionTests: XCTestCase {
         // given
         class MockSUT: UITextField {
             var controlEventsSent: UIControlEvents?
-            private override func sendActionsForControlEvents(controlEvents: UIControlEvents) {
+            fileprivate override func sendActions(for controlEvents: UIControlEvents) {
                 controlEventsSent = controlEvents
             }
         }
@@ -202,7 +202,7 @@ class AMTextFieldPickerExtensionTests: XCTestCase {
         SUT.didPressPickerDoneButton(self)
         
         // then
-        expect(SUT.controlEventsSent).toEventually(equal(UIControlEvents.EditingChanged))
+        expect(SUT.controlEventsSent).toEventually(equal(UIControlEvents.editingChanged))
     }
     
     func test__didPressPickerDoneButton__resignsFirstResponder() {
@@ -218,7 +218,7 @@ class AMTextFieldPickerExtensionTests: XCTestCase {
         sut.didPressPickerDoneButton(self)
         
         // then
-        expect(self.sut.isFirstResponder()).to(beFalse())
+        expect(self.sut.isFirstResponder).to(beFalse())
     }
     
     func test__didPressPickerDoneButton__givenDatePicker__setsTextFieldText_withDateFormat() {
@@ -227,12 +227,12 @@ class AMTextFieldPickerExtensionTests: XCTestCase {
         sut.dateFormatter.dateFormat = format
         
         sut.datePicker = UIDatePicker()
-        let date = NSDate()
+        let date = Date()
         sut.datePicker?.setDate(date, animated: false)
         
-        let formatter = NSDateFormatter()
+        let formatter = DateFormatter()
         formatter.dateFormat = format
-        let expected = formatter.stringFromDate(date)
+        let expected = formatter.string(from: date)
         
         // when
         sut.didPressPickerDoneButton(self)
@@ -256,7 +256,7 @@ class AMTextFieldPickerExtensionTests: XCTestCase {
         // given
         class MockSUT: UITextField {
             var controlEventsSent: UIControlEvents?
-            private override func sendActionsForControlEvents(controlEvents: UIControlEvents) {
+            fileprivate override func sendActions(for controlEvents: UIControlEvents) {
                 controlEventsSent = controlEvents
             }
         }
@@ -267,7 +267,7 @@ class AMTextFieldPickerExtensionTests: XCTestCase {
         SUT.didPressPickerClearButton(self)
         
         // then
-        expect(SUT.controlEventsSent).toEventually(equal(UIControlEvents.EditingChanged))
+        expect(SUT.controlEventsSent).toEventually(equal(UIControlEvents.editingChanged))
     }
     
 }
@@ -276,7 +276,7 @@ class MockPickerView: UIPickerView {
     
     var mockSelectedRow: Int = 0
     
-    override func selectedRowInComponent(component: Int) -> Int {
+    override func selectedRow(inComponent component: Int) -> Int {
         return mockSelectedRow
     }
     
@@ -286,7 +286,7 @@ class MockPickerViewTitleDelegate: NSObject, UIPickerViewDelegate {
     
     var mockTitle: String = ""
     
-    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return mockTitle
     }
     
