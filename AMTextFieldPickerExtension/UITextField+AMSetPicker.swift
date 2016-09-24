@@ -15,7 +15,7 @@ import UIKit
  */
 public extension UITextField {
     
-    fileprivate struct AssociatedKeys {
+    private struct AssociatedKeys {
         static var DateFormatter = "am_DateFormat"
         static var ShowClearButton = "am_ShowClearButton"
         static var ClearButtonTitle = "am_ClearButtonTitle"
@@ -41,28 +41,28 @@ public extension UITextField {
         }
     }
     
-    fileprivate func setInputViewToPicker(_ picker: UIView?) {
+    private func setInputViewToPicker(picker: UIView?) {
         self.inputView = picker
         self.inputAccessoryView = picker != nil ? pickerToolbar() : nil
     }
     
-    fileprivate func refreshPickerToolbar() {
+    private func refreshPickerToolbar() {
         self.inputAccessoryView = hasPicker() ? pickerToolbar() : nil
     }
     
-    fileprivate func hasPicker() -> Bool {
+    private func hasPicker() -> Bool {
         return pickerView != nil || datePicker != nil
     }
     
-    fileprivate func pickerToolbar() -> UIToolbar {
+    private func pickerToolbar() -> UIToolbar {
         let toolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: 320, height: 44))
-        let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .FlexibleSpace, target: nil, action: nil)
         let doneButton = createDoneButton()
         
         var toolbarItems = [flexibleSpace, doneButton]
         
         if showPickerClearButton {
-            toolbarItems.insert(createClearButton(), at: 0)
+            toolbarItems.insert(createClearButton(), atIndex: 0)
         }
         
         toolbar.items = toolbarItems
@@ -70,27 +70,27 @@ public extension UITextField {
         return toolbar
     }
     
-    fileprivate func createDoneButton() -> UIBarButtonItem {
-        return UIBarButtonItem(barButtonSystemItem: .done,
+    private func createDoneButton() -> UIBarButtonItem {
+        return UIBarButtonItem(barButtonSystemItem: .Done,
                                target: self,
                                action: #selector(UITextField.didPressPickerDoneButton(_:)))
     }
     
-    fileprivate func createClearButton() -> UIBarButtonItem {
+    private func createClearButton() -> UIBarButtonItem {
         return UIBarButtonItem(title: clearButtonTitle,
-                               style: .plain,
+                               style: .Plain,
                                target: self,
                                action: #selector(UITextField.didPressPickerClearButton(_:)))
     }
     
     /// The `NSDateFormatter` to use to set the text field's `text` when using the `datePicker`.
     /// Defaults to a date formatter with date format: "M/d/yy".
-    public var dateFormatter: DateFormatter {
+    public var dateFormatter: NSDateFormatter {
         get {
-            if let formatter = objc_getAssociatedObject(self, &AssociatedKeys.DateFormatter) as? DateFormatter {
+            if let formatter = objc_getAssociatedObject(self, &AssociatedKeys.DateFormatter) as? NSDateFormatter {
                 return formatter
             } else {
-                let formatter = DateFormatter()
+                let formatter = NSDateFormatter()
                 formatter.dateFormat = "M/d/yy"
                 objc_setAssociatedObject(self, &AssociatedKeys.DateFormatter, formatter, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
                 return formatter
@@ -131,7 +131,7 @@ public extension UITextField {
      
      - parameter sender: The "Done" button sending the action.
      */
-    public func didPressPickerDoneButton(_ sender: AnyObject) {
+    public func didPressPickerDoneButton(sender: AnyObject) {
         guard pickerView != nil || datePicker != nil else { return }
         
         if pickerView != nil {
@@ -140,22 +140,23 @@ public extension UITextField {
         } else if datePicker != nil {
             setTextFromDatePicker()
         }
-        DispatchQueue.main.async(execute: { () -> Void in
-            self.sendActions(for: .editingChanged)
-        })
+        
+        dispatch_async(dispatch_get_main_queue()) {
+            self.sendActionsForControlEvents(.EditingChanged)
+        }
         resignFirstResponder()
     }
     
-    fileprivate func setTextFromPickerView() {
-        if let selectedRow = pickerView?.selectedRow(inComponent: 0),
+    private func setTextFromPickerView() {
+        if let selectedRow = pickerView?.selectedRowInComponent(0),
             let title = pickerView?.delegate?.pickerView?(pickerView!, titleForRow: selectedRow, forComponent: 0) {
             self.text = title
         }
     }
     
-    fileprivate func setTextFromDatePicker() {
+    private func setTextFromDatePicker() {
         if let date = datePicker?.date {
-            self.text = self.dateFormatter.string(from: date)
+            self.text = self.dateFormatter.stringFromDate(date)
         }
     }
     
@@ -166,11 +167,11 @@ public extension UITextField {
      
      - parameter sender: The clear button sending the action.
      */
-    public func didPressPickerClearButton(_ sender: AnyObject) {
+    public func didPressPickerClearButton(sender: AnyObject) {
         self.text = nil
-        DispatchQueue.main.async(execute: { () -> Void in
-            self.sendActions(for: .editingChanged)
-        })
+        dispatch_async(dispatch_get_main_queue()) { 
+            self.sendActionsForControlEvents(.EditingChanged)
+        }
         resignFirstResponder()
     }
     
