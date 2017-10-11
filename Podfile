@@ -9,5 +9,5 @@ target :AMTextFieldPickerExtension do
 end
 
 target :AMTextFieldPickerExtensionTests do
-  pod "Nimble", :git => 'https://github.com/Quick/Nimble', :branch => 'swift-3.0'
+  pod "Nimble", '~> 7.0'
 end

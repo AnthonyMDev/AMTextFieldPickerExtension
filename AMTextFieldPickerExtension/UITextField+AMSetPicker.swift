@@ -131,7 +131,7 @@ public extension UITextField {
      
      - parameter sender: The "Done" button sending the action.
      */
-    public func didPressPickerDoneButton(_ sender: AnyObject) {
+    @objc public func didPressPickerDoneButton(_ sender: AnyObject) {
         guard pickerView != nil || datePicker != nil else { return }
         
         if pickerView != nil {
@@ -166,7 +166,7 @@ public extension UITextField {
      
      - parameter sender: The clear button sending the action.
      */
-    public func didPressPickerClearButton(_ sender: AnyObject) {
+    @objc public func didPressPickerClearButton(_ sender: AnyObject) {
         self.text = nil
         DispatchQueue.main.async(execute: { () -> Void in
             self.sendActions(for: .editingChanged)
