@@ -186,8 +186,8 @@ class AMTextFieldPickerExtensionTests: XCTestCase {
     func test__didPressPickerDoneButton__givenDelegate_sendsEditingChangedAction() {
         // given
         class MockSUT: UITextField {
-            var controlEventsSent: UIControlEvents?
-            fileprivate override func sendActions(for controlEvents: UIControlEvents) {
+            var controlEventsSent: UIControl.Event?
+            fileprivate override func sendActions(for controlEvents: UIControl.Event) {
                 controlEventsSent = controlEvents
             }
         }
@@ -202,7 +202,7 @@ class AMTextFieldPickerExtensionTests: XCTestCase {
         SUT.didPressPickerDoneButton(self)
         
         // then
-        expect(SUT.controlEventsSent).toEventually(equal(UIControlEvents.editingChanged))
+        expect(SUT.controlEventsSent).toEventually(equal(UIControl.Event.editingChanged))
     }
     
     func test__didPressPickerDoneButton__resignsFirstResponder() {
@@ -255,8 +255,8 @@ class AMTextFieldPickerExtensionTests: XCTestCase {
     func test__didPressPickerClearButton__sendsEditingChangedAction() {
         // given
         class MockSUT: UITextField {
-            var controlEventsSent: UIControlEvents?
-            fileprivate override func sendActions(for controlEvents: UIControlEvents) {
+            var controlEventsSent: UIControl.Event?
+            fileprivate override func sendActions(for controlEvents: UIControl.Event) {
                 controlEventsSent = controlEvents
             }
         }
@@ -267,7 +267,7 @@ class AMTextFieldPickerExtensionTests: XCTestCase {
         SUT.didPressPickerClearButton(self)
         
         // then
-        expect(SUT.controlEventsSent).toEventually(equal(UIControlEvents.editingChanged))
+        expect(SUT.controlEventsSent).toEventually(equal(UIControl.Event.editingChanged))
     }
     
 }
